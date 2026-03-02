@@ -1,36 +1,37 @@
 import { Code2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav className="w-full h-20 flex items-center justify-between glass-panel rounded-2xl mt-6 px-6 animate-morph">
-      <div className="flex items-center gap-3">
+      <Link to="/" className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center shadow-[0_0_15px_rgba(107,78,255,0.5)]">
           <Code2 className="text-white w-6 h-6" />
         </div>
         <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
           BIT Coder
         </span>
-      </div>
+      </Link>
 
       <div className="hidden md:flex items-center gap-8 font-medium text-sm text-slate-600 dark:text-slate-300">
-        <a
-          href="#"
+        <Link
+          to="/pricing"
           className="hover:text-brand-purple dark:hover:text-white transition-colors"
         >
           Pricing
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/features"
           className="hover:text-brand-purple dark:hover:text-white transition-colors"
         >
           Features
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/docs"
           className="hover:text-brand-purple dark:hover:text-white transition-colors"
         >
           Docs
-        </a>
+        </Link>
       </div>
 
       <div className="flex items-center gap-4">

@@ -1,6 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import LandingPage from "./components/LandingPage";
+import Pricing from "./components/Pricing";
+import FeaturesPage from "./components/FeaturesPage";
+import Docs from "./components/Docs";
 import { GripVertical, Moon, Sun } from "lucide-react";
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<LandingPage />} />
+        <Route path="pricing" element={<Pricing />} />
+        <Route path="features" element={<FeaturesPage />} />
+        <Route path="docs" element={<Docs />} />
+      </Route>
+    </Routes>
+  );
+}
 
 export default function App() {
   const [splitPosition, setSplitPosition] = useState(50);
@@ -73,7 +91,7 @@ export default function App() {
   if (isMobile) {
     return (
       <div className={`relative w-full min-h-screen overflow-x-hidden ${mobileTheme === 'dark' ? 'dark bg-[#0A0A0A] text-white' : 'light bg-[#F8F9FA] text-slate-900'}`}>
-        <LandingPage theme={mobileTheme} />
+        <AppRoutes />
         
         {/* Mobile Theme Toggle */}
         <button 
@@ -95,7 +113,7 @@ export default function App() {
       <div ref={containerRef} className="relative w-full">
         {/* Light Mode (Base) */}
         <div className="w-full light bg-[#F8F9FA] text-slate-900 min-h-screen">
-          <LandingPage theme="light" />
+          <AppRoutes />
         </div>
 
         {/* Dark Mode (Clipped Overlay) */}
@@ -104,7 +122,7 @@ export default function App() {
           style={{ clipPath: `inset(0 ${100 - splitPosition}% 0 0)` }}
         >
           <div className="pointer-events-auto h-full">
-            <LandingPage theme="dark" />
+            <AppRoutes />
           </div>
         </div>
       </div>
